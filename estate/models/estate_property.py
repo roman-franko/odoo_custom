@@ -10,7 +10,7 @@ class RecurringPlan(models.Model):
     _order = "sequence"
 
     name = fields.Char(default="Unknown", required=True)
-    postcode = fields.Char(default="Unknown")
+    description = fields.Char(default="Unknown")
     postcode = fields.Char(default="Unknown")
     expected_price = fields.Float('Expected Price', required=True, default=2.1)
     selling_price = fields.Float('Selling Price', readonly=True)
@@ -23,6 +23,7 @@ class RecurringPlan(models.Model):
                                     copy=False)
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer(default=1)
+    facades = fields.Integer(default=1)
     garage = fields.Boolean(default=False)
     garden = fields.Boolean(default=False)
     garden_area = fields.Integer(default=1)
