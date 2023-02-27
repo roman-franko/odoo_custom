@@ -13,12 +13,12 @@ class EstateProperty(models.Model):
     postcode = fields.Char(default="Unknown")
     expected_price = fields.Float('Expected Price', required=True, default=2.1)
     selling_price = fields.Float('Selling Price', readonly=True)
-    availability_date = fields.Date('Availability Date', 
+    availability_date = fields.Date('Availability Date',
                                     default=lambda self: fields.Datetime.add(
                                         fields.Datetime.now(),
                                         months=3
-                                    ), 
-                                    readonly=True, 
+                                    ),
+                                    readonly=True,
                                     copy=False)
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer(default=1)
@@ -30,3 +30,7 @@ class EstateProperty(models.Model):
     active = fields.Boolean('Active', default=False)
     sequence = fields.Integer('Sequence', default=10)
 
+    user_id = fields.Many2one('res.users',
+                              string='Salesperson',
+                              default=lambda self: self.env.user)
+    partner_id = fields.Many2one("res.partner", string="Buyer")
