@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models
 
 
-class RecurringPlan(models.Model):
+class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "estate properties"
     _order = "sequence"
@@ -30,3 +29,4 @@ class RecurringPlan(models.Model):
     garden_orientation = fields.Char(default="Unknown")
     active = fields.Boolean('Active', default=False)
     sequence = fields.Integer('Sequence', default=10)
+

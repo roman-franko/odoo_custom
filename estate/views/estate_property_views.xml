@@ -57,10 +57,10 @@
                 <filter string="Available" name="availability_date"
                     domain="[('availability_date', '&gt;', context_today().strftime('%Y-%m-%d'))]" />
 
-                <!-- <group expand="1" string="Group By">
-                    <filter string="Provider" name="provider"
-                        context="{'group_by':'delivery_type', 'residual_visible':True}" />
-                </group> -->
+                <group expand="1" string="Group By">
+                    <filter string="Postcode" name="postcode"
+                        context="{'group_by':'postcode', 'state':'New'}" />
+                </group>
             </search>
         </field>
     </record>

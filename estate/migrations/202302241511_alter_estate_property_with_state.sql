@@ -1,7 +1,7 @@
 -- Add a state field to the estate.property model. 
 -- Five values are possible: New, Offer Received, Offer Accepted, Sold and Canceled. 
 
-ALTER TABLE estate_property ADD state character varying DEF;
+ALTER TABLE estate_property ADD state character varying;
 
 ALTER TABLE estate_property 
    ADD CONSTRAINT check_state_types 
