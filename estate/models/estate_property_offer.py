@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models
-
+from odoo.exceptions import UserError
 
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
@@ -27,3 +27,18 @@ class EstatePropertyOffer(models.Model):
             if record.date_deadline:
                 record.validity = (record.date_deadline -
                                    record.create_date).days
+    
+    def accept(self):
+        for record in self:
+            property_id = self.property_id 
+            if property_id.has_active_offer():
+                raise UserError("You can't accept an offer while there is an active offer")
+            if property_id:
+                property_id.set_selling_price(record.price)
+                if record.partner_id: property_id.set_buyer(record.partner_id) 
+            record.status = 'Accepted'
+
+
+    def refuse(self):
+        for record in self:
+            record.status = 'Refused'
